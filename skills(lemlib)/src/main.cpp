@@ -15,7 +15,7 @@
 #define blue_value 100.00
 
 
-#define MOUTH_PORT1 -1
+#define MOUTH_PORT1 1
 #define OUTTAKE_PORT1 -10
 
 #define HORIZONTAL_PORT 15
@@ -390,11 +390,11 @@ void autonomous() {
 				stopper.set_value(true);
 			}
 			else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
-				intake_move(6000);
+				intake_move(12000);
 				stopper.set_value(false);
 			}
 			else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-				intake_move(-6000);
+				intake_move(-12000);
 				stopper.set_value(false);
 			}
 			else{
