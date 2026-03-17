@@ -15,7 +15,7 @@
 #define blue_value 100.00
 
 
-#define MOUTH_PORT1 1
+#define MOUTH_PORT1 -1
 #define OUTTAKE_PORT1 -10
 
 #define HORIZONTAL_PORT 15
