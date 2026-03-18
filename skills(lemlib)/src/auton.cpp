@@ -22,6 +22,8 @@ void left_auton() {
 	bar.set_value(true);
 	chassis.moveToPoint(-30.132, 0.8, 800);//match loader
 
+	distance_left.reset();
+
 	chassis.moveToPose(-29.332, 34.399, -175, 800, {.forwards = false, .maxSpeed = 50});
 	intake_move(12000);
 	stopper.set_value(true);
@@ -106,6 +108,8 @@ void skills_auton() {
 }
 void sawp_auton() {
     chassis.setPose({0, 0, 0});
+
+	chassis.turnToHeading(90, 10000000);
 }
 
 void forwards_auton() {

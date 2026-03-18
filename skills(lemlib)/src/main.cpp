@@ -5,11 +5,15 @@
 #include "autons.hpp"
 #include "liblvgl/llemu.hpp"
 #include "pros/llemu.hpp"
+#include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include "robot_config.hpp"
 
-// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 0;
+
+bool bar_bool = true;
+
+// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+int selected_auton = 3;
 // 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=(=+=========+++++++
 
 int get_color(double hue) {
@@ -120,6 +124,12 @@ void opcontrol() {
         } else {
             wing.set_value(true);
         }
+
+        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+            bar.set_value(bar_bool);
+            bar_bool = !bar_bool;
+        }
+
 
         pros::delay(25);
     }
