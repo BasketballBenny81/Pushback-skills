@@ -1,6 +1,7 @@
 #include "main.h"
 
 #include <string>
+#include <sys/_intsup.h>
 
 #include "autons.hpp"
 #include "liblvgl/llemu.hpp"
@@ -9,12 +10,55 @@
 #include "pros/rtos.hpp"
 #include "robot_config.hpp"
 
+int selector_stage = 1;
+
+// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+int selected_auton = 2;
+// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=*=+++++++
+
+// void left_callback() {
+//     if (selector_stage == 1) {
+//         int selected_auto  = 0;
+//     }
+//     else if (selector_stage == 2) {
+//         int selected_auto  = 2;
+//     }
+  
+// };
+void left_callback() {
+    if (selector_stage == 1) {
+        selected_auton = 0;
+        selector_stage = 2;
+    }
+    else if (selector_stage == 2) {
+        selected_auton = 2;
+        selector_stage = 3;
+    }
+}
+void middle_callback() {
+    if (selector_stage == 1) {
+        selected_auton = 1;
+        selector_stage = 2;
+    }
+    else if (selector_stage == 2) {
+        selected_auton = 3;
+        selector_stage = 3;
+    }
+  
+};
+void right_callback() {
+    if (selector_stage == 1) {
+        selector_stage = 2;
+    }
+    else if (selector_stage == 2) {
+        selected_auton = 4;
+        selector_stage = 3;
+    }
+  
+};
 
 bool bar_bool = true;
 
-// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 3;
-// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=(=+=========+++++++
 
 int get_color(double hue) {
     int c = 2;
@@ -23,7 +67,7 @@ int get_color(double hue) {
     } else if (hue >= 150) {
         c = 0;
     } else {
-        c = 2;//hi
+        c = 2;
     }
     return c;
 }
@@ -61,11 +105,26 @@ void initialize() {
 
     static pros::Task screen_task([]() {
         while (true) {
+            
+            pros::lcd::register_btn0_cb(left_callback);
+            pros::lcd::register_btn1_cb(middle_callback);
+            pros::lcd::register_btn2_cb(right_callback);
+            
             pros::lcd::print(0, "X: %f", chassis.getPose().x);
             pros::lcd::print(1, "Y: %f", chassis.getPose().y);
             pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
             pros::lcd::print(3, "Rotation Sensor: %i", horizontal_sensor.get_position());
             pros::delay(20);
+            if (selector_stage == 1) {
+                pros::lcd::set_text(7, "left, right, next page");
+            }
+            else if (selector_stage == 2) {
+                pros::lcd::set_text(7, "skills, sawp, forwards");
+            }
+            else {
+                pros::lcd::set_text(6, "0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards");
+                pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
+            }
         }
     });
 

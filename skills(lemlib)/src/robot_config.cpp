@@ -58,8 +58,8 @@ lemlib::OdomSensors sensors(&vertical_tracking_wheel,
                             &imu);
 
 lemlib::ControllerSettings lateral_controller(9.25, 
-                                              0, 
-                                              75,
+                                              0,
+                                              80,
                                               3, 
                                               1, 
                                               100, 
