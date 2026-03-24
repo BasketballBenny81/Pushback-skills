@@ -169,7 +169,21 @@ void sawp_auton() {
 	pros::delay(1000);
 	bar.set_value(true);
 
-	chassis.turnToHeading(135, 1000);
+	chassis.moveToPoint(-15, -42, 2000, {.earlyExitRange=8});
+	chassis.moveToPoint(3, -58, 2000);
+	chassis.turnToHeading(90, 1000);
+	pros::delay(200);
+	bar.set_value(true);
+	chassis.moveToPoint(10, -58, 1000);
+	chassis.moveToPoint(30, -58, 1000);
+	pros::delay(800);
+    chassis.moveToPoint(-8, -58, 2000, {.forwards=false});
+    chassis.moveToPoint(-28, -58.5, 2000, {.forwards=false});
+	pros::delay(50);
+	stopper.set_value(true);
+
+	
+	chassis.turnToPoint(135, 1000, 500,  {.forwards = false});
 	pros::delay(500);
 	bar.set_value(false);
 
@@ -183,18 +197,6 @@ void sawp_auton() {
 	pros::delay(400);
 	midgoalswitch.set_value(true);
 	intake_move(0);
-	chassis.moveToPoint(-15, -42, 2000, {.earlyExitRange=8});
-	chassis.moveToPoint(3, -58, 2000);
-	chassis.turnToHeading(90, 1000);
-	pros::delay(200);
-	bar.set_value(true);
-	chassis.moveToPoint(10, -58, 1000);
-	chassis.moveToPoint(30, -58, 1000);
-	pros::delay(800);
-    chassis.moveToPoint(-8, -58, 2000, {.forwards=false});
-    chassis.moveToPoint(-28, -58.5, 2000, {.forwards=false});
-	pros::delay(50);
-	stopper.set_value(true);
 
 }
 
