@@ -300,7 +300,7 @@ void sawp_auton() {
 	bar.set_value(true);
 	
 	chassis.moveToPoint(10, -58, 1000);
-	chassis.moveToPoint(30, -58, 1000);//this is a change
+	chassis.moveToPoint(30, -58, 1000);
 	pros::delay(800);
 
 
