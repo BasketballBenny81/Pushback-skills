@@ -41,8 +41,8 @@ pros::Imu imu(IMU_PORT);
 pros::Rotation horizontal_sensor(HORIZONTAL_PORT);
 pros::Rotation vertical_sensor(VERTICAL_PORT);
 
-lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_sensor, lemlib::Omniwheel::NEW_2, -3.5);
-lemlib::TrackingWheel vertical_tracking_wheel(&vertical_sensor, lemlib::Omniwheel::NEW_2, 0);
+lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_sensor, lemlib::Omniwheel::NEW_2, 2.75);
+lemlib::TrackingWheel vertical_tracking_wheel(&vertical_sensor, lemlib::Omniwheel::NEW_2, 2.75);
 
 lemlib::Drivetrain drivetrain(&left_legs, 
                               &right_legs, 
