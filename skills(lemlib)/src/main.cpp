@@ -101,6 +101,8 @@ void initialize() {
     intakelift.set_value(true);
 
     chassis.calibrate();
+    imu.reset();
+    pros::delay(5000);
 
     static pros::Task screen_task([]() {
         while (true) {
@@ -108,12 +110,12 @@ void initialize() {
             pros::lcd::register_btn0_cb(left_callback);
             pros::lcd::register_btn1_cb(middle_callback);
             pros::lcd::register_btn2_cb(right_callback);
-            
+            double ex =1.5;
             pros::lcd::print(0, "X: %f", chassis.getPose().x);
             pros::lcd::print(1, "Y: %f", chassis.getPose().y);
             pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
-            pros::lcd::print(3, "Rotation Sensor: %i", horizontal_sensor.get_position());
-            // printf("imu %f\n horizontal %f\n  vertical %f", imu.get_heading(), horizontal_sensor.get_position(), vertical_sensor.get_position());
+            pros::lcd::print(3, "IMU Heading: %lf", imu.get_heading());
+            pros::lcd::print(4, "Rotation Sensor: %i", horizontal_sensor.get_position());
             pros::delay(20);
             if (selector_stage == 1) {
                 pros::lcd::set_text(7, "left, right, next page");
@@ -143,7 +145,6 @@ void opcontrol() {
     while (true) {
         const double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature()) / 2;
         // controller.print(0, 0, "DT: %0.1f", drive_temp);
-         controller.print(0, 0, "Theta: %f", chassis.getPose().theta);
 
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
