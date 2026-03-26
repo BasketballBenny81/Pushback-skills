@@ -13,7 +13,7 @@
 int selector_stage = 1;
 
 // 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 2;
+int selected_auton = 4;
 // 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=*=+++++++
 
 // void left_callback() {
@@ -114,6 +114,7 @@ void initialize() {
             pros::lcd::print(1, "Y: %f", chassis.getPose().y);
             pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
             pros::lcd::print(3, "Rotation Sensor: %i", horizontal_sensor.get_position());
+            // printf("imu %f\n horizontal %f\n  vertical %f", imu.get_heading(), horizontal_sensor.get_position(), vertical_sensor.get_position());
             pros::delay(20);
             if (selector_stage == 1) {
                 pros::lcd::set_text(7, "left, right, next page");
@@ -143,7 +144,8 @@ void autonomous() {
 void opcontrol() {
     while (true) {
         const double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature()) / 2;
-        controller.print(0, 0, "DT: %0.1f", drive_temp);
+        // controller.print(0, 0, "DT: %0.1f", drive_temp);
+         controller.print(0, 0, "Theta: %f", chassis.getPose().theta);
 
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
@@ -165,19 +167,27 @@ void opcontrol() {
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
             intake_move(12000);
-            stopper.set_value(true);
+            if (scoremode_bool) {
+                stopper.set_value(true);
+                intakelift.set_value(true);
+            } else {
+                stopper.set_value(false);
+            }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             intake_move(-12000);
             stopper.set_value(true);
+            intakelift.set_value(false);
             if (selected_auton == 2) {
                 intakelift.set_value(false);
             }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
             stopper.set_value(false);
+            intakelift.set_value(true);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             intake_move(-12000);
             stopper.set_value(false);
+            intakelift.set_value(true);
             if (selected_auton == 2) {
                 intakelift.set_value(false);
             }
