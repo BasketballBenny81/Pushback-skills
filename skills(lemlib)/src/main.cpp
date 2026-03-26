@@ -101,7 +101,6 @@ void initialize() {
     intakelift.set_value(true);
 
     chassis.calibrate();
-    imu.reset();
     pros::delay(5000);
 
     static pros::Task screen_task([]() {
