@@ -112,7 +112,8 @@ void initialize() {
             pros::lcd::print(0, "X: %f", chassis.getPose().x);
             pros::lcd::print(1, "Y: %f", chassis.getPose().y);
             pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
-            pros::lcd::print(3, "Rotation Sensor: %i", horizontal_sensor.get_position());
+            pros::lcd::print(3, "IMU Heading: %f", imu.get_heading());
+            pros::lcd::print(4, "Rotation Sensor: %i", horizontal_sensor.get_position());
             pros::delay(20);
             if (selector_stage == 1) {
                 pros::lcd::set_text(7, "left, right, next page");
