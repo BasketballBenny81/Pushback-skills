@@ -100,7 +100,6 @@ void initialize() {
     stopper.set_value(true);
     intakelift.set_value(true);
 
-    imu.reset();
     chassis.calibrate();
 
     static pros::Task screen_task([]() {
@@ -128,7 +127,6 @@ void initialize() {
         }
     });
 
-    imu.reset(true);
     printf("initialized");
 }
 
