@@ -110,8 +110,6 @@ void right_auton() {
 
 	chassis.turnToPoint(20.799, 49.599, 550);
 	chassis.moveToPoint(20.799, 49.599, 1000, {.maxSpeed = 70});
-
-
 }
 
 void skills_auton() {
