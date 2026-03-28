@@ -32,7 +32,6 @@ void left_auton() {
 	chassis.turnToPoint(-30.132, 16.266, 700);
 	bar.set_value(false);
 	chassis.moveToPoint(-30.132, 16.266, 800);
-
 	// leftxreset();
 
 	pros::delay(500);
@@ -278,19 +277,19 @@ void sawp_auton() {
 	chassis.moveToPoint(-39.3, -36, 600); //middle balls 2
 	chassis.waitUntilDone();
 
-	chassis.moveToPoint(-37, -38, 800, {.maxSpeed=90}); //middle balls back
+	chassis.moveToPoint(-37, -36, 800, {.maxSpeed=90}); //middle balls back
 
 
-	chassis.turnToPoint(0, -120, 300);
+	chassis.turnToPoint(0, -120, 500);
 	chassis.waitUntilDone();
 
 	chassis.setPose({0,0,0});
-	chassis.moveToPoint(0,27.8,700);
-	chassis.turnToPoint(-69,0,500);
+	chassis.moveToPoint(0,27,700);
+	chassis.turnToPoint(-70,0,500);
 
 
 	chassis.setPose({0,0,0});
-    chassis.moveToPoint(67, -13, 1000, {.forwards=false, .maxSpeed=90}); //scoring long goal 2
+    chassis.moveToPoint(67, -15, 1000, {.forwards=false, .maxSpeed=90}); //scoring long goal 2
 	chassis.waitUntilDone();
 
 	stopper.set_value(true);
