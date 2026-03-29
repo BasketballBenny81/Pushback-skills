@@ -87,34 +87,38 @@ void right_auton() {
 	chassis.turnToPoint(0, 80, 700);
 	chassis.moveToPoint(1, 82, 700);
 	intake_move(-12000);
-	intakelift.set_value(false)
+	intakelift.set_value(false);
+	pros::delay(400);
 
-
-	bar.set_value(true);
-	chassis.turnToPoint(30.132, 0.8, 700);
-	chassis.moveToPoint(30.132, 0.8, 800, {.maxSpeed = 50});//match loader
-	pros::delay(1000);
-
-	chassis.moveToPose(29.332, 34.399, 175, 800, {.forwards = false, .maxSpeed = 63.5});//scoring
 	intake_move(12000);
-	stopper.set_value(true);
-	pros::delay(1000);
+	intakelift.set_value(true);
+
+
+// 	bar.set_value(true);
+// 	chassis.turnToPoint(30.132, 0.8, 700);
+// 	chassis.moveToPoint(30.132, 0.8, 800, {.maxSpeed = 50});//match loader
+// 	pros::delay(1000);
+
+// 	chassis.moveToPose(29.332, 34.399, 175, 800, {.forwards = false, .maxSpeed = 63.5});//scoring
+// 	intake_move(12000);
+// 	stopper.set_value(true);
+// 	pros::delay(1000);
 	
-	intake_move(12000);
-	stopper.set_value(false);
+// 	intake_move(12000);
+// 	stopper.set_value(false);
 
-	chassis.moveToPoint(30.132, 16.266, 800);
+// 	chassis.moveToPoint(30.132, 16.266, 800);
 
-	chassis.turnToPoint(-2.933, 47.732, 500);
-	chassis.moveToPose(-2.933, 47.732, 50, 800); //middle goal
-	intake_move(-12000);
-	pros::delay(1000);
+// 	chassis.turnToPoint(-2.933, 47.732, 500);
+// 	chassis.moveToPose(-2.933, 47.732, 50, 800); //middle goal
+// 	intake_move(-12000);
+// 	pros::delay(1000);
 
-	chassis.moveToPoint(21.6, 26.933, 500, {.forwards = false});
+// 	chassis.moveToPoint(21.6, 26.933, 500, {.forwards = false});
 
-	chassis.turnToPoint(20.799, 49.599, 550);
-	chassis.moveToPoint(20.799, 49.599, 1000, {.maxSpeed = 70});
-}
+// 	chassis.turnToPoint(20.799, 49.599, 550);
+// 	chassis.moveToPoint(20.799, 49.599, 1000, {.maxSpeed = 70});
+// }
 
 void skills_auton() {
     chassis.setPose({0, 0, 0});
