@@ -12,9 +12,9 @@
 
 int selector_stage = 1;
 
-// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
 int selected_auton =1;
-// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=*=+++++++
+// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright 
 
 // void left_callback() {
 //     if (selector_stage == 1) {
@@ -28,21 +28,29 @@ int selected_auton =1;
 void left_callback() {
     if (selector_stage == 1) {
         selected_auton = 0;
-        selector_stage = 2;
+        selector_stage = 0;
     }
     else if (selector_stage == 2) {
         selected_auton = 2;
-        selector_stage = 3;
+        selector_stage = 0;
+    }
+    else if (selector_stage == 3) {
+        selected_auton = 4;
+        selector_stage = 0;
     }
 }
 void middle_callback() {
     if (selector_stage == 1) {
         selected_auton = 1;
-        selector_stage = 2;
+        selector_stage = 0;
     }
     else if (selector_stage == 2) {
         selected_auton = 3;
-        selector_stage = 3;
+        selector_stage = 0;
+    }
+    else if (selector_stage == 3) {
+        selected_auton = 5;
+        selector_stage = 0;
     }
   
 };
@@ -51,8 +59,11 @@ void right_callback() {
         selector_stage = 2;
     }
     else if (selector_stage == 2) {
-        selected_auton = 4;
         selector_stage = 3;
+    }
+    else if (selector_stage == 3) {
+        selected_auton = 6;
+        selector_stage = 0;
     }
   
 };
@@ -124,7 +135,10 @@ while (imu.is_calibrating()) {
                 pros::lcd::set_text(7, "left, right, next page");
             }
             else if (selector_stage == 2) {
-                pros::lcd::set_text(7, "skills, sawp, forwards");
+                pros::lcd::set_text(7, "skills, sawp, next page");
+            }
+            else if (selector_stage == 3) {
+                pros::lcd::set_text(7, "forwards, ");
             }
             else {
                 pros::lcd::set_text(6, "0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards");
