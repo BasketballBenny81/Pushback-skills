@@ -78,7 +78,7 @@ void right_auton() {
 	bar.set_value(true);
 	pros::delay(600);
 	chassis.turnToPoint(54, 80, 700);
-	chassis.moveToPoint(8, 33, 700, {.forwards = false});
+	chassis.moveToPoint(8, 33, 700);
 
 	chassis.turnToPoint(0, 33, 700);
 	chassis.moveToPoint(-7, 40, 700);
