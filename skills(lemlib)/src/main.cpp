@@ -10,10 +10,10 @@
 #include "pros/rtos.hpp"
 #include "robot_config.hpp"
 
-int selector_stage = 1;
+int selector_stage = 0;
 
 // 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton =1;
+int selected_auton =0;
 // 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright 
 
 // void left_callback() {
@@ -154,7 +154,7 @@ void disabled() {}
 void competition_initialize() {}
 
 void autonomous() {
-right_auton();
+left_auton();
     // chassis.setPose(0, 0, 0);
     // // turn to face heading 90 with a very long timeout
     // chassis.moveToPoint(0, 48, 10000, {.maxSpeed = 70});
