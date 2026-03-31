@@ -115,12 +115,13 @@ void initialize() {
 while (imu.is_calibrating()) {
     pros::delay(10);
 }
-    static pros::Task screen_task([]() {
-        while (true) {
-            
             pros::lcd::register_btn0_cb(left_callback);
             pros::lcd::register_btn1_cb(middle_callback);
             pros::lcd::register_btn2_cb(right_callback);
+
+    static pros::Task screen_task([]() {
+        while (true) {
+            
             double ex =1.5;
             // pros::lcd::print(0, "X: %f", chassis.getPose().x);
             // pros::lcd::print(1, "Y: %f", chassis.getPose().y);
@@ -154,7 +155,7 @@ void disabled() {}
 void competition_initialize() {}
 
 void autonomous() {
-left_auton();
+    run_auton_by_number(selected_auton);
     // chassis.setPose(0, 0, 0);
     // // turn to face heading 90 with a very long timeout
     // chassis.moveToPoint(0, 48, 10000, {.maxSpeed = 70});
