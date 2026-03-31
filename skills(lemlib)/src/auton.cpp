@@ -33,9 +33,9 @@ intake_move(12000);
 	chassis.moveToPoint(-8, 33, 700, {.forwards = false});
 
 	chassis.turnToPoint(0, 33, 700);
-	chassis.moveToPoint(7, 40, 700);
-	intake_move(-6000);
-	intakelift.set_value(false);
+	chassis.moveToPoint(7, 40, 700, {.forwards = false});
+	midgoalswitch.set_value(false);
+	stopper.set_value(true);
 	pros::delay(1000);
 
 	intake_move(12000);
