@@ -83,10 +83,10 @@ void right_auton() {
 	chassis.turnToPoint(-40, 48, 1000);
 	chassis.moveToPoint(26, 10, 1000, {.forwards = false, .minSpeed = 45});
 
-	chassis.turnToPoint(32, -15, 1000);
+	chassis.turnToPoint(34, -15, 1000);
 	bar.set_value(true);
-	chassis.moveToPoint(32, -34, 1000, {.maxSpeed = 60});
-	pros::delay(400);
+	chassis.moveToPoint(34, -34, 1000, {.maxSpeed = 60});
+	pros::delay(350);
 	chassis.moveToPoint(32, 48, 1500, {.forwards = false, .maxSpeed = 60});
 	pros::delay(1500);
 	stopper.set_value(true);
