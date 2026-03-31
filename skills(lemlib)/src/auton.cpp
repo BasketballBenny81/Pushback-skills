@@ -23,8 +23,12 @@ intake_move(12000);
     chassis.setPose(0, 0, 0);
 	
 	chassis.moveToPoint(-10, 25, 1000, {.maxSpeed = 76});
+	pros::delay(300);
+	bar.set_value(true);
+	pros::delay(200);
+	bar.set_value(false);
 	chassis.turnToPoint(-36, 54, 700);
-	chassis.moveToPoint(-31, 36, 700);
+	chassis.moveToPoint(-33, 38, 700);
 	pros::delay(600);
 	bar.set_value(true);
 	pros::delay(600);
@@ -33,22 +37,23 @@ intake_move(12000);
 	chassis.moveToPoint(-11, 33, 700, {.forwards = false});
 
 	chassis.turnToPoint(-50, 0, 700);
-	chassis.moveToPoint(7, 40, 700, {.forwards = false});
+	chassis.moveToPoint(4, 45, 600, {.forwards = false});
+	intake_move(6000);
+	pros::delay(750);
 	midgoalswitch.set_value(false);
 	pros::delay(1000);
-	midgoalswitch.set_value(false);
-
+	midgoalswitch.set_value(true);
 	intake_move(12000);
-	chassis.turnToPoint(40, 50, 700);
-	chassis.moveToPoint(40, 50, 700);
 
-	// chassis.turnToPoint(-32, -5, 700);
-	// bar.set_value(true);
-	// chassis.moveToPoint(-32, -25, 700);
-	// pros::delay(500);
-	// chassis.moveToPoint(-32, 48, 1500, {.forwards = false, .maxSpeed = 60});
-	// pros::delay(1500);
-	// stopper.set_value(true);
+	chassis.moveToPoint(-32, 5, 1000);
+
+	chassis.turnToPoint(-36, -10, 700);
+	bar.set_value(true);
+	chassis.moveToPoint(-30, -30, 700);
+	pros::delay(1000);
+	chassis.moveToPoint(-34, 48, 1500, {.forwards = false, .maxSpeed = 60});
+	pros::delay(1500);
+	stopper.set_value(true);
 }
 
 
