@@ -331,8 +331,8 @@ void tensawp_auton() {
 
  chassis.turnToPoint(34, -22, 1000);
   bar.set_value(true);
-  chassis.moveToPoint(34, -20, 1000, {.maxSpeed = 40}); // match loader
-  pros::delay(1000);
+  chassis.moveToPoint(34, -22, 1000, {.maxSpeed = 40}); // match loader
+  pros::delay(1100);
 
   chassis.moveToPoint(34, 48, 900,{.forwards = false, .maxSpeed = 60}); // scoring
   bar.set_value(false);
@@ -341,39 +341,40 @@ void tensawp_auton() {
   pros::delay(1000);
   stopper.set_value(false);
 
-  chassis.moveToPoint(15, 25, 1000);
+  chassis.moveToPoint(12, 25, 1000);
   pros::delay(800);
   bar.set_value(true);
-  pros::delay(300);
+  pros::delay(200);
   bar.set_value(false);
+  pros::delay(500);
 
   chassis.moveToPoint(0, 40, 1000, {.maxSpeed = 60}); // middle balls and middle goal
   intake_move(-6000);
   intakelift.set_value(false);
-  pros::delay(2000);
+  pros::delay(1750);
   intakelift.set_value(true);
   chassis.moveToPoint(15, 35, 500, {.forwards = false});
   intake_move(12000);
 
-  chassis.turnToPoint(-18, 31, 300);
-  chassis.moveToPoint(-18, 26, 690); // middle balls 2
+  chassis.turnToPoint(-16, 37, 300);
+  chassis.moveToPoint(-16, 30, 690); // middle balls 2
   pros::delay(1000);
   bar.set_value(true);
   pros::delay(300);
   bar.set_value(false);
 
-
+  intake_move(8000);
   chassis.turnToPoint(-55, 0, 500);
-  chassis.moveToPoint(-22, 46, 800, {.forwards = false, .maxSpeed = 60});
+  chassis.moveToPoint(-22, 44, 800, {.forwards = false, .maxSpeed = 60});
   pros::delay(750);
   midgoalswitch.set_value(false);
-  pros::delay(1000);
+  pros::delay(1500);
   midgoalswitch.set_value(true);
 
-  chassis.moveToPoint(-34, 42, 690);
+  chassis.moveToPoint(-34, 40, 690);
   pros::delay(500);
   midgoaldescore.set_value(true);
-  chassis.moveToPoint(-22, 46, 690, {.forwards = false, .maxSpeed = 60});
+  chassis.moveToPoint(-22, 44, 690, {.forwards = false, .maxSpeed = 60});
 //   chassis.turnToPoint(-41.316, 97.533, 500, {.forwards = false});
 //   chassis.moveToPoint(-41.316, 97.533, 800,
 //                       {.forwards = false}); // middle goal 2
