@@ -13,7 +13,7 @@
 int selector_stage = 0;
 
 // 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 4;
+int selected_auton = 3;
 // 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright 
 
 // void left_callback() {
@@ -25,47 +25,13 @@ int selected_auton = 4;
 //     }
   
 // };
-void left_callback() {
-    if (selector_stage == 1) {
-        selected_auton = 0;
-        selector_stage = 0;
+void on_button_pressed() {
+    if (selected_auton < 6) {
+    selected_auton = selected_auton + 1;    
+    } else {
+    selected_auton = 0;
     }
-    else if (selector_stage == 2) {
-        selected_auton = 2;
-        selector_stage = 0;
-    }
-    else if (selector_stage == 3) {
-        selected_auton = 4;
-        selector_stage = 0;
-    }
-}
-void middle_callback() {
-    if (selector_stage == 1) {
-        selected_auton = 1;
-        selector_stage = 0;
-    }
-    else if (selector_stage == 2) {
-        selected_auton = 3;
-        selector_stage = 0;
-    }
-    else if (selector_stage == 3) {
-        selected_auton = 5;
-        selector_stage = 0;
-    }
-  
-};
-void right_callback() {
-    if (selector_stage == 1) {
-        selector_stage = 2;
-    }
-    else if (selector_stage == 2) {
-        selector_stage = 3;
-    }
-    else if (selector_stage == 3) {
-        selected_auton = 6;
-        selector_stage = 0;
-    }
-  
+    pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
 };
 
 bool bar_bool = true;
@@ -100,6 +66,12 @@ void on_center_button() {
 void initialize() {
     pros::lcd::initialize();
 
+    pros::lcd::register_btn0_cb(on_button_pressed);
+    pros::lcd::register_btn1_cb(on_button_pressed);
+    pros::lcd::register_btn2_cb(on_button_pressed);
+    
+    pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
+    
     mouth.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
@@ -109,43 +81,16 @@ void initialize() {
     stopper.set_value(false);
     intakelift.set_value(true);
 
+    pros::lcd::set_text(5, "0 = left, 1 = right, 2 = skills");
+    pros::lcd::set_text(6, "3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright");
+
     chassis.calibrate();
     pros::delay(1000);
 
 while (imu.is_calibrating()) {
     pros::delay(10);
 }
-            pros::lcd::register_btn0_cb(left_callback);
-            pros::lcd::register_btn1_cb(middle_callback);
-            pros::lcd::register_btn2_cb(right_callback);
 
-    static pros::Task screen_task([]() {
-        while (true) {
-            
-            double ex =1.5;
-            // pros::lcd::print(0, "X: %f", chassis.getPose().x);
-            // pros::lcd::print(1, "Y: %f", chassis.getPose().y);
-            // pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
-            // pros::lcd::print(3, "IMU Heading: %f", imu.get_heading());
-            // pros::lcd::print(4, "Rotation Sensor: %i", horizontal_sensor.get_position());
-            printf("imu theta: %lf\n", imu.get_heading());
-            pros::delay(20);
-            if (selector_stage == 1) {
-                pros::lcd::set_text(7, "left, right, next page");
-            }
-            else if (selector_stage == 2) {
-                pros::lcd::set_text(7, "skills, sawp, next page");
-            }
-            else if (selector_stage == 3) {
-                pros::lcd::set_text(7, "10sawp, elimleft, elimright");
-            }
-            else {
-                pros::lcd::set_text(6, "// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright");
-                pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
-            }
-            pros::delay(100);
-        }
-    });
 
     printf("initialized");
 }
@@ -235,4 +180,4 @@ void opcontrol() {
 
         pros::delay(25);
     }
-}
+};

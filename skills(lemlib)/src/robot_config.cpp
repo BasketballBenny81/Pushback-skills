@@ -123,8 +123,10 @@ void right(int voltage, double time_ms) {
 }
 
 void intake_move(int voltage) {
+
     mouth.move_voltage(voltage);
     outtake.move_voltage(voltage);
+
 }
 
 void intake_brake() {
