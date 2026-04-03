@@ -242,6 +242,8 @@ void skills_auton() {
   bar.set_value(true);
   skillsrightxreset();
 
+  // sean is a bum
+
   chassis.moveToPoint(48.132, -6.933, 800); // match loader
   pros::delay(500);
 
