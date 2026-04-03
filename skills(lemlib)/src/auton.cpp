@@ -242,7 +242,6 @@ void skills_auton() {
   bar.set_value(true);
   skillsrightxreset();
 
-  // sean is a bum
 
   chassis.moveToPoint(48.132, -6.933, 800); // match loader
   pros::delay(500);
@@ -259,12 +258,12 @@ void sawp_auton() {
 
   chassis.moveToPoint(34, 0, 1000);
 
-  chassis.turnToPoint(34, -22, 700);
+  chassis.turnToPoint(34, -22, 500);
   bar.set_value(true);
   chassis.moveToPoint(34, -22, 1000, {.maxSpeed = 50}); // match loader
   pros::delay(1100);
 
-  chassis.moveToPoint(34, 60, 900,{.forwards = false, .maxSpeed = 70}); // scoring
+  chassis.moveToPoint(34, 60, 900,{.forwards = false, .maxSpeed = 60}); // scoring
   bar.set_value(false);
   pros::delay(950);
   stopper.set_value(true);
@@ -275,12 +274,25 @@ void sawp_auton() {
   // chassis.moveToPoint(15, 35, 500,  {.forwards = false, .minSpeed = 100});
   // intake_move(12000);
 
-  chassis.turnToPoint(-20, 28, 1000);
+  chassis.turnToPoint(-20, 28, 500);
   chassis.moveToPoint(-20, 28, 1000, {.minSpeed = 100}); // middle balls 2
-  chassis.turnToPoint(-60, 0, 1000);
-  chassis.moveToPoint(-60, 0, 1000, {.minSpeed = 100});
-  chassis.turnToPoint(-60, -2, 1000);
-  chassis.moveToPoint(-60, 54, 1000, {.forwards = false});
+  chassis.turnToPoint(-55, 0, 500);
+  chassis.moveToPoint(-55, 0, 1000, {.minSpeed = 100});
+  chassis.turnToHeading(180, 500);
+  chassis.moveToPoint(-55, 50, 1000, {.forwards = false, .minSpeed = 70});
+  pros::delay(1000);
+  stopper.set_value(true);
+  pros::delay(1000);
+  bar.set_value(true);
+  chassis.moveToPoint(-55, -35, 1000, {.maxSpeed = 50});
+  pros::delay(2000);
+  chassis.moveToPoint(-55, -5, 300, {.minSpeed = 100});
+  chassis.turnToPoint(-10, 43, 1000, {.forwards = false});
+  chassis.moveToPoint(-10, 43, 1000, {.forwards = false, .maxSpeed = 110});
+  pros::delay(750);
+  midgoalswitch.set_value(false);
+  pros::delay(1250);
+  midgoalswitch.set_value(true);
 
 
 }
@@ -296,9 +308,9 @@ void tensawp_auton() {
   chassis.moveToPoint(34, -22, 1000, {.maxSpeed = 50}); // match loader
   pros::delay(1100);
 
-  chassis.moveToPoint(34, 60, 900,{.forwards = false, .maxSpeed = 70}); // scoring
+  chassis.moveToPoint(34, 60, 900,{.forwards = false, .maxSpeed = 60}); // scoring
   bar.set_value(false);
-  pros::delay(1000);
+  pros::delay(1050);
   stopper.set_value(true);
   pros::delay(1000);
   stopper.set_value(false);
@@ -314,12 +326,12 @@ void tensawp_auton() {
   chassis.moveToPoint(-3, 42, 1000, {.maxSpeed = 60}); // middle balls and middle goal
   intake_move(-6250);
   intakelift.set_value(false);
-  pros::delay(1750);
+  pros::delay(1500);
   intakelift.set_value(true);
   chassis.moveToPoint(15, 35, 500,  {.forwards = false, .minSpeed = 100});
   intake_move(12000);
 
-  chassis.turnToPoint(-10, 37, 300);
+  chassis.turnToPoint(-10, 30, 300);
   chassis.moveToPoint(-10, 30, 690, {.minSpeed = 100}); // middle balls 2
   pros::delay(1000);
   bar.set_value(true);
@@ -328,16 +340,16 @@ void tensawp_auton() {
 
   intake_move(6000);
   chassis.turnToPoint(-70, 0, 500);
-  chassis.moveToPoint(-16, 47, 800, {.forwards = false, .maxSpeed = 60});
+  chassis.moveToPoint(-16, 45, 800, {.forwards = false, .maxSpeed = 50});
   pros::delay(750);
   midgoalswitch.set_value(false);
   pros::delay(1250);
   midgoalswitch.set_value(true);
 
-  chassis.moveToPoint(-31, 32, 690, {.minSpeed = 80});
+  chassis.moveToPoint(-31, 30, 690, {.minSpeed = 80});
   pros::delay(500);
   midgoaldescore.set_value(true);
-  chassis.moveToPoint(-16, 47, 690, {.forwards = false, .maxSpeed = 60});
+  chassis.moveToPoint(-16, 45, 690, {.forwards = false, .maxSpeed = 60});
 //   chassis.turnToPoint(-41.316, 97.533, 500, {.forwards = false});
 //   chassis.moveToPoint(-41.316, 97.533, 800,
 //                       {.forwards = false}); // middle goal 2
