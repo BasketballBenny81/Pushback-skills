@@ -59,14 +59,15 @@ void left_auton() {
 	chassis.moveToPoint(-38, 50, 1500, {.forwards = false, .maxSpeed = 60});//scoring
 	pros::delay(1500);
 	stopper.set_value(true);
+  bar.set_value(false);
 
-	chassis.moveToPoint(-32, 10, 700);
+	chassis.moveToPoint(-42, 10, 700);
 
-  chassis.turnToPoint(-48, 10, 500);
-  chassis.moveToPoint(-48, 10, 800);
+  chassis.turnToPoint(-44, 10, 500);
+  chassis.moveToPoint(-44, 10, 800);
 
-  chassis.turnToPoint(-48, 31, 500, {.forwards = false});
-  chassis.moveToPoint(-48, 31, 800, {.forwards = false});//wing
+  chassis.turnToPoint(-44, 31, 500, {.forwards = false});
+  chassis.moveToPoint(-44, 31, 800, {.forwards = false});//wing
   
 }
 
@@ -109,13 +110,13 @@ void right_auton() {
   stopper.set_value(true);
 
   
-  chassis.moveToPoint(32, 10, 700);
+  chassis.moveToPoint(28, 10, 700);
 
-  chassis.turnToPoint(21, 10, 500);
-  chassis.moveToPoint(22, 10, 700);
+  chassis.turnToPoint(24, 10, 500);
+  chassis.moveToPoint(24, 10, 700);
 
-  chassis.turnToPoint(20, 31, 500, {.forwards = false});
-  chassis.moveToPoint(20, 31, 700, {.forwards = false});//wing
+  chassis.turnToPoint(24, 31, 500, {.forwards = false});
+  chassis.moveToPoint(24, 31, 700, {.forwards = false});//wing
   
 }
 
@@ -257,7 +258,7 @@ void sawp_auton() {
   chassis.setPose({0, 0, 90});
   intake_move(12000);
 
-  chassis.moveToPoint(32, 0, 1000);
+  chassis.moveToPoint(32, 0, 1000, {.minSpeed = 127});
   pros::delay(300);
   chassis.turnToPoint(32, -22, 500);
   bar.set_value(true);
@@ -265,7 +266,7 @@ void sawp_auton() {
   chassis.moveToPoint(32, -22, 800, {.maxSpeed = 50}); // match loader
   pros::delay(1000);
 
-  chassis.moveToPoint(30.5, 50, 900,{.forwards = false, .minSpeed = 70}); // scoring
+  chassis.moveToPoint(31, 50, 900,{.forwards = false, .minSpeed = 70}); // scoring
   bar.set_value(false);
   pros::delay(950);
   stopper.set_value(true);
@@ -275,24 +276,23 @@ void sawp_auton() {
   chassis.moveToPoint(15.5, 28, 700, {.minSpeed = 115});
  // chassis.moveToPoint(12, -35, 500,  {.forwards = false, .minSpeed = 100});
   intake_move(12000);
-
   chassis.turnToPoint(-24, 30, 300);
   chassis.moveToPoint(-24, 30, 800, {.minSpeed = 115}); // middle balls 2
-  chassis.turnToPoint(-54, 0, 500);
-  chassis.moveToPoint(-54, 0, 1000, {.minSpeed = 127});
+  chassis.turnToPoint(-58, 0, 500);
+  chassis.moveToPoint(-58, 0, 1200, {.minSpeed = 127});
   chassis.turnToHeading(180, 500);
-  chassis.moveToPoint(-54, 50, 800, {.forwards = false, .minSpeed = 90});
+  chassis.moveToPoint(-60, 50, 800, {.forwards = false, .minSpeed = 70});
   pros::delay(1000);
   stopper.set_value(true);
   pros::delay(1000);
   stopper.set_value(false);
   bar.set_value(true);
-  chassis.moveToPoint(-50, -10, 800, {.minSpeed = 127}); // match loader
-  chassis.moveToPoint(-50, -35, 800, {.maxSpeed = 50});
+  // chassis.moveToPoint(-58, -10, 800, {.minSpeed = 127}); // match loader
+  chassis.moveToPoint(-58, -60, 800, {.minSpeed = 70});
   pros::delay(1100);
+  chassis.turnToPoint(-10, 47, 300, {.forwards = false});
+  chassis.moveToPoint(-10, 47, 1000, {.forwards = false, .maxSpeed = 110});
   intake_move(8000);
-  chassis.turnToPoint(-10, 38, 300, {.forwards = false});
-  chassis.moveToPoint(-10, 38, 1000, {.forwards = false, .maxSpeed = 110});
   pros::delay(1100);
   midgoalswitch.set_value(false);
   pros::delay(1250);
@@ -380,20 +380,20 @@ void elimleft_auton() {
   midgoalswitch.set_value(true);
   intake_move(12000);
 
-  chassis.moveToPoint(-32, 5, 1000);
+  chassis.moveToPoint(-34, 5, 1000);
 
-	chassis.turnToPoint(-32, -10, 700);
+	chassis.turnToPoint(-34, -10, 700);
 	bar.set_value(true);
-	chassis.moveToPoint(-32, -22, 1500, {.maxSpeed = 60});
+	chassis.moveToPoint(-34, -28, 1500, {.maxSpeed = 60});
 	pros::delay(800);
-	chassis.moveToPoint(-36, 52, 1500, {.forwards = false, .maxSpeed = 60});//scoring
+	chassis.moveToPoint(-34, 52, 1500, {.forwards = false, .maxSpeed = 60});//scoring
 		pros::delay(1000);
   stopper.set_value(true);
   pros::delay(1500);
 	stopper.set_value(true);
   bar.set_value(false);
 
-	chassis.moveToPoint(-32, 10, 700);
+	chassis.moveToPoint(-42, 10, 700);
 
   chassis.turnToPoint(-44, 10, 500);
   chassis.moveToPoint(-44, 10, 800);
@@ -438,13 +438,13 @@ void elimright_auton() {
   stopper.set_value(true);
 
   
-  chassis.moveToPoint(32, 10, 700);
+  chassis.moveToPoint(28, 10, 700);
 
-  chassis.turnToPoint(21, 10, 500);
-  chassis.moveToPoint(22, 10, 700);
+  chassis.turnToPoint(24, 10, 500);
+  chassis.moveToPoint(24, 10, 700);
 
-  chassis.turnToPoint(20, 31, 500, {.forwards = false});
-  chassis.moveToPoint(20, 31, 700, {.forwards = false});//wing
+  chassis.turnToPoint(24, 31, 500, {.forwards = false});
+  chassis.moveToPoint(24, 31, 700, {.forwards = false});//wing
   
 }
 
