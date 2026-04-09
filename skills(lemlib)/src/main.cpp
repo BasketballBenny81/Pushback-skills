@@ -12,21 +12,12 @@
 
 int selector_stage = 0;
 
-// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = skills75 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
 int selected_auton = 3;
-// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright 
+// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = skills75
 
-// void left_callback() {
-//     if (selector_stage == 1) {
-//         int selected_auto  = 0;
-//     }
-//     else if (selector_stage == 2) {
-//         int selected_auto  = 2;
-//     }
-  
-// };
 void on_button_pressed() {
-    if (selected_auton < 6) {
+    if (selected_auton < 7) {
     selected_auton = selected_auton + 1;    
     } else {
     selected_auton = 0;

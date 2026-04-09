@@ -374,6 +374,13 @@ void elimright_auton() {
   
 }
 
+void skills75_auton() {
+  chassis.setPose({0, 0, 0});
+
+  
+
+}
+
 void run_auton_by_number(int auton_number) {
   switch (auton_number) {
   case 0:
@@ -396,6 +403,9 @@ void run_auton_by_number(int auton_number) {
     break;
   case 6:
     elimright_auton();
+    break;
+  case 7:
+    skills75_auton();
     break;
   default:
     left_auton();

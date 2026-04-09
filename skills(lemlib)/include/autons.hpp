@@ -7,5 +7,6 @@ void sawp_auton();
 void tensawp_auton();
 void elimleft_auton();
 void elimright_auton();
+void skills75_auton();
 
 void run_auton_by_number(int auton_number);
