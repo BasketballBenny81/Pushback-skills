@@ -121,13 +121,32 @@ void right_auton() {
 }
 
 void skills_auton() {
-  chassis.setPose({0, 0, 90});
+  chassis.setPose({0, 0, 0});
   intake_move(12000);
-  chassis.moveToPoint(32, 0, 1000);
-  pros::delay(300);
-  chassis.turnToPoint(32, -22, 500);
-  chassis.moveToPoint(32, -22, 1000);
-  pros::delay(1500);
+  pros::delay(2500);
+  chassis.moveToPoint(0, 10, 1000);
+  pros::delay(2500);
+  midgoaldescore.set_value(true);
+  chassis.moveToPoint(0, -20, 2000, {.forwards = false});
+  midgoaldescore.set_value(false); 
+  chassis.moveToPoint(0, 15,2000, {.maxSpeed = 60});
+  chassis.setPose({0, 0, 0});
+  chassis.turnToPoint(-24, 40, 500);  
+  // chassis.moveToPoint(-24, 40, 1500, {.forwards = false});
+  // chassis.turnToPoint(-26, 38, 500);
+  // chassis.moveToPoint(-26, 38, 500);
+  // chassis.moveToPoint(-24, 40, 1000, {.forwards = false});
+  // intake_move(7000);
+  // pros::delay(750)
+  // midgoalswitch.set_value(false);
+  // pros::delay(5000);
+  // midgoalswitch.set_value(true);
+  // intake_move(12000);
+
+
+
+    
+
 };
 
 void sawp_auton() {
@@ -135,14 +154,14 @@ void sawp_auton() {
   chassis.setPose({0, 0, 90});
   intake_move(12000);
 
-  chassis.moveToPoint(28, 0, 1000, {.minSpeed = 127});
-  chassis.turnToPoint(28, -22, 500);
+  chassis.moveToPoint(32, 0, 1000, {.minSpeed = 127});
+  chassis.turnToPoint(32, -22, 500);
   bar.set_value(true);
-  chassis.moveToPoint(28, -5, 500, {.minSpeed = 127}); // match loader
-  chassis.moveToPoint(28, -22, 800, {.maxSpeed = 50}); // match loader
+  chassis.moveToPoint(32, -5, 500, {.minSpeed = 127}); // match loader
+  chassis.moveToPoint(32, -22, 800, {.maxSpeed = 50}); // match loader
   pros::delay(1000);
 
-  chassis.moveToPoint(28, 50, 900,{.forwards = false, .minSpeed = 70}); // scoring
+  chassis.moveToPoint(32, 50, 900,{.forwards = false, .minSpeed = 70}); // scoring
   bar.set_value(false);
   pros::delay(950);
   stopper.set_value(true);
