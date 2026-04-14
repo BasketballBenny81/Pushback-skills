@@ -51,99 +51,90 @@ void skills_auton() {
 };
 
 void skills75_auton() {
+  bar.set_value(false);
+  intakelift.set_value(true);
   intake_move(12000);
   chassis.setPose({0, 0, 0});
-
-  chassis.moveToPoint(10, 25, 700, {.minSpeed = 55});
-
-  chassis.turnToPoint(34, 0, 500);
-  chassis.moveToPoint(34, 0, 700);
-
-  chassis.turnToPoint(34, -24, 700);
-  bar.set_value(true);
-  chassis.moveToPoint(34, -24, 700);// match loader
+  chassis.moveToPoint(13, 25, 700, {.minSpeed = 55});
   pros::delay(500);
-
-  chassis.moveToPoint(34, 0, 700, {.forwards = false});
+  bar.set_value(true);
+  pros::delay(300);
+  chassis.turnToPoint(-2, 38, 1000, {.minSpeed = 55});
   bar.set_value(false);
-
-  chassis.turnToPoint(46, 0, 600);
-  chassis.moveToPoint(46, 0, 700);
-
-  chassis.turnToPoint(46, 84, 600);
-  chassis.moveToPoint(46, 84, 900);//long 1
-
-  chassis.turnToPoint(34, 84, 600);
-  chassis.moveToPoint(34, 84, 700);
-
-  chassis.turnToPoint(34, 72, 600, {.forwards = false});
-  chassis.moveToPoint(34, 72, 700, {.forwards = false});//scoring
-  stopper.set_value(true);
+  chassis.moveToPoint(-2, 38, 1000, {.minSpeed = 55});
+  pros::delay(400);
+  intakelift.set_value(false);
+  intake_move(-8000);
   pros::delay(1000);
-  stopper.set_value(false);
-
-  chassis.setPose(34, 72, 0);
-
+  intake_move(12000);
+  intakelift.set_value(true);
+  chassis.turnToPoint(32, 12, 500, {.forwards = false});
+  chassis.moveToPoint(32, 12, 1500, {.forwards = false});
+  intakelift.set_value(true);
+  chassis.turnToPoint(32, -24, 500);
   bar.set_value(true);
-  chassis.moveToPoint(34, 108, 700);//match loader
-  pros::delay(500);
+  chassis.moveToPoint(34, -50, 400, {.maxSpeed = 60});// match loader
+  chassis.moveToPoint(35, -50, 100, {.maxSpeed = 40});
+  pros::delay(2000);
+  chassis.moveToPoint(34, -24, 1000);
 
-  chassis.moveToPoint(34, 72, 700, {.forwards = false});//scoring
+  chassis.turnToPoint(50, 0, 600, {.forwards = false});
+  bar.set_value(false);
+  chassis.moveToPoint(50, 0, 700, {.forwards = false});
+
+  chassis.turnToPoint(50, 92, 600, {.forwards = false});
+  chassis.moveToPoint(50, 92, 3000, {.forwards = false});//long 1
+  chassis.turnToPoint(40, 92, 600, {.forwards = false});
+  chassis.moveToPoint(40, 92, 700, {.forwards = false});
+  chassis.turnToHeading(0, 1000);
+  chassis.moveToPoint(40, 60, 700, {.forwards = false});//scoring
+  pros::delay(750);
   stopper.set_value(true);
-  pros::delay(1000);
+  pros::delay(2000);
   stopper.set_value(false);
-
-  chassis.setPose(34, 72, 0);
-
-  chassis.moveToPoint(34, 84, 700);
-
-  chassis.turnToPoint(-62, 84, 600);
-  chassis.moveToPoint(-62, 84, 700);
-
-  chassis.turnToPoint(-62, 108, 600);
   bar.set_value(true);
-  chassis.moveToPoint(-62, 108, 700);//match loader
-  pros::delay(500);
-
-  chassis.moveToPoint(-62, 84, 700, {.forwards = false});
-
-  chassis.turnToPoint(-74, 84, 600);
-  chassis.moveToPoint(-74, 84, 700);
-
-  chassis.turnToPoint(-74, 0, 600);
-  chassis.moveToPoint(-74, 0, 900);//long 2
-
-  chassis.turnToPoint(-62, 0, 600);
-  chassis.moveToPoint(-62, 0, 700);
-
-  chassis.turnToPoint(-62, 24, 600, {.forwards = false});
-  chassis.moveToPoint(-62, 24, 700, {.forwards = false});//scoring
+  chassis.moveToPoint(38, 140, 1000, {.maxSpeed = 60});
+  chassis.moveToPoint(38, 140, 1000, {.maxSpeed = 40});
+  pros::delay(2000);
+  chassis.moveToPoint(40, 65, 1000, {.forwards = false, .maxSpeed = 60});
+  chassis.moveToPoint(40, 65, 1000, {.forwards = false, .maxSpeed = 60});
+  bar.set_value(false);
+   pros::delay(750);
   stopper.set_value(true);
-  pros::delay(1000);
+  pros::delay(2000);
+  chassis.setPose({0, 0, 0});
+  chassis.moveToPoint(0, 13, 1000);
   stopper.set_value(false);
-
+  chassis.turnToPoint(-95, 13, 500);
+  chassis.moveToPoint(-95, 13, 3000);
+  
+  chassis.turnToPoint(-100, 40, 700);
   bar.set_value(true);
-  chassis.moveToPoint(-62, -12, 700);//match loader
-  pros::delay(500);
+  chassis.moveToPoint(-100, 40, 1000);
+  chassis.moveToPoint(-100, 42, 1000);
+  pros::delay(2000);
+  chassis.turnToPoint(-130, 0, 500, {.forwards = false});
+  chassis.moveToPoint(-130, 0, 1000, {.forwards = false});
+  bar.set_value(false);
+  chassis.turnToPoint(-150, -70, 500, {.forwards = false});
+  chassis.moveToPoint(-150, -70, 2000, {.forwards = false});  
+  chassis.turnToPoint(-120, -70, 500, {.forwards = false});
+  chassis.moveToPoint(-120, -70, 1000, {.forwards = false}); 
+  chassis.turnToPoint(-115, -50, 500, {.forwards = false});
+  chassis.moveToPoint(-115, -50, 1000, {.forwards = false});
+  // pros::delay(750);
+  // stopper.set_value(true);
+  // pros::delay(2000);
+  // stopper.set_value(false);
+  // bar.set_value(true);
+  // chassis.moveToPoint(-107, -124, 1000);
+  // pros::delay(2000);
+  // chassis.moveToPoint(-107, -60, 1000, {.forwards = false}); 
+  // pros::delay(750);
+  // stopper.set_value(true);
+  // pros::delay(2000); 
+  // chassis.setPose({0, 0, 0});
 
-  chassis.moveToPoint(-62, 0, 700, {.forwards = false});
-
-  chassis.turnToPoint(-38, 24, 700);
-  chassis.moveToPoint(-38, 24, 700);//middle balls
-
-  midgoalswitch.set_value(false);
-
-  chassis.turnToPoint(-26, 36, 600, {.forwards = false});
-  chassis.moveToPoint(-26, 36, 700, {.forwards = false}); //middle goal
-  stopper.set_value(true);
-  pros::delay(1000);
-  stopper.set_value(false);
-
-  chassis.turnToPoint(-36, -24, 600);
-  chassis.moveToPoint(-36, -24, 700);
-
-  chassis.turnToPoint(-12, -24, 600);
-  chassis.moveToPoint(-12, -24, 700);//park 
 
 }
 
