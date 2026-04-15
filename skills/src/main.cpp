@@ -17,7 +17,7 @@ int selected_auton = 1;
 // 0 = skills, 1 = skills75
 
 void on_button_pressed() {
-    if (selected_auton < 7) {
+    if (selected_auton < 1) {
     selected_auton = selected_auton + 1;    
     } else {
     selected_auton = 0;
@@ -70,7 +70,7 @@ void initialize() {
     wing.set_value(false);
     midgoalswitch.set_value(true);
     stopper.set_value(false);
-    intakelift.set_value(false);
+    intakelift.set_value(true);
 
     pros::lcd::set_text(6, "0 = skills, 1 = skills75");
 
@@ -110,6 +110,7 @@ void opcontrol() {
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
             scoremode_bool = false;
+
         } else {
             scoremode_bool = true;
         }
@@ -125,11 +126,12 @@ void opcontrol() {
             stopper.set_value(true);
             if (scoremode_bool == false){
                 mouth.move_voltage(12000);
-                outtake.move_voltage(3000);
+                outtake.move_voltage(4000);
+                stopper.set_value(false);
             } else {
                 if (slowscoremode_bool == true) {
-                    mouth.move_voltage(3000);
-                    outtake.move_voltage(3000);
+                    mouth.move_voltage(12000);
+                    outtake.move_voltage(6000);
                 
                 }
                 else{
@@ -142,19 +144,20 @@ void opcontrol() {
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             //reverse
             stopper.set_value(false);
-            mouth.move_voltage(-3000);
-            outtake.move_voltage(-12000);          
+            mouth.move_voltage(-4000);
+            outtake.move_voltage(-12000);   
+            intakelift.set_value(false);
         }
         else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             //outtake
             stopper.set_value(false);
             if (scoremode_bool == false){
                 mouth.move_voltage(12000);
-                outtake.move_voltage(3000);
+                outtake.move_voltage(4000);
             } else {
                 if (slowscoremode_bool == true) {
-                    mouth.move_voltage(3000);
-                    outtake.move_voltage(3000);
+                    mouth.move_voltage(12000);
+                    outtake.move_voltage(6000);
                 
                 }
                 else{
@@ -166,10 +169,12 @@ void opcontrol() {
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             //reverse
             stopper.set_value(false);
-            mouth.move_voltage(-3000);
+            mouth.move_voltage(-4000);
             outtake.move_voltage(-12000);
+            intakelift.set_value(false);
         } else {
             intake_brake();
+            intakelift.set_value(true);
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {

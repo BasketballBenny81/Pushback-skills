@@ -3,7 +3,7 @@
 
 namespace {
 constexpr int MOUTH_PORT = -10;
-constexpr int OUTTAKE_PORT = 0;
+constexpr int OUTTAKE_PORT = 1;
 constexpr int HORIZONTAL_PORT = 15;
 constexpr int VERTICAL_PORT = -16;
 constexpr int IMU_PORT = 14;
@@ -28,7 +28,7 @@ pros::adi::Pneumatics wing('B', false);
 pros::adi::Pneumatics midgoalswitch('C', true);
 pros::adi::Pneumatics stopper('D', false);
 pros::adi::Pneumatics midgoaldescore('E', false);
-pros::adi::Pneumatics intakelift('F', true);
+pros::adi::Pneumatics intakelift('G', true);
 
 bool scoremode_bool = true;
 
