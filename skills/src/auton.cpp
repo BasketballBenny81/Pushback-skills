@@ -35,11 +35,11 @@ void skills_auton() {
   chassis.moveToPoint(0, 18,1000, {.maxSpeed = 40});
   chassis.setPose({0, 0, 0});
   chassis.moveToPose(-4, -60,45,2000, {.forwards = false, .minSpeed = 10});
-  chassis.turnToPoint(25, -15, 1000);
-  chassis.moveToPoint(25, -15, 1000, {.maxSpeed = 40});
+  chassis.turnToPoint(25, -18, 1000);
+  chassis.moveToPoint(25, -18, 1000, {.maxSpeed = 40});
 
-  chassis.turnToPoint(4, -43, 1000, {.forwards = false});
-  chassis.moveToPoint(4, -43, 1000, {.forwards = false, .maxSpeed = 40});
+  chassis.turnToPoint(4, -45, 1000, {.forwards = false});
+  chassis.moveToPoint(4, -45, 1000, {.forwards = false, .maxSpeed = 40});
   pros::delay(1000);
   outtake.move_voltage(4000);
   mouth.move_voltage(12000); 
@@ -79,9 +79,9 @@ void skills_auton() {
   stopper.set_value(true);
   pros::delay(2000);
   chassis.setPose(0,0,0);
-  chassis.moveToPoint(0, 10, 1000);
-  chassis.turnToPoint(50, 10, 500);
-  chassis.moveToPoint(50, 10, 2000);
+  chassis.moveToPoint(0, 5, 1000);
+  chassis.turnToPoint(50, 5, 500);
+  chassis.moveToPoint(50, 5, 2000);
   chassis.turnToHeading(0, 1000);
   // intake_move(7000);
   // pros::delay(750)
