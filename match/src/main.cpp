@@ -118,26 +118,30 @@ void opcontrol() {
             midgoalswitch.set_value(true);
         } else {
             midgoalswitch.set_value(false);
+            stopper.set_value (false);
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
             intake_move(12000);
             //outtake scoring
+            intakelift.set_value(false);
             stopper.set_value(true);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             intake_move(-12000);
             stopper.set_value(false);
-            intakelift.set_value(false);
+            intakelift.set_value(true);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
             stopper.set_value(false);
-            intakelift.set_value(true);
+            intakelift.set_value(false);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             intake_move(-12000);
             stopper.set_value(false);
             intakelift.set_value(true);
         } else {
+            intakelift.set_value(false);
             intake_brake();
+
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
